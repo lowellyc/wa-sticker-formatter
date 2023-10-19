@@ -11,6 +11,7 @@ export interface IStickerConfig {
     id?: string
     /** Sticker Category*/
     categories?: Categories[]
+    publisher_website?: string;
 }
 
 export interface IStickerOptions extends IStickerConfig {
@@ -34,6 +35,7 @@ export interface IRawMetadata {
     'sticker-pack-id': string
     'sticker-pack-name': string
     'sticker-pack-publisher': string
+    'publisher-website': string
 }
 
 export type Metadata = IStickerConfig | IStickerOptions

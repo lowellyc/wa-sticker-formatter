@@ -8,11 +8,20 @@ export default class StickerMetadata implements IStickerOptions {
         public pack = '',
         public author = '',
         public categories: Categories[] = [],
-        public id = Utils.generateStickerID()
+        public id = Utils.generateStickerID(),
+        public publisher_website = '',
     ) {}
 
     static from = (object: Partial<StickerMetadata>): StickerMetadata => {
-        return new StickerMetadata(object.pack, object.author, object.categories, object.id)
+        return new StickerMetadata(object.pack, object.author, object.categories, object.id, object.publisher_website)
+    }
+
+    public setPublisherWebsite = (website: string): this => {
+        if (!website.match(/https|http/)) {
+            throw new Error('invalid website format')
+        }
+        this.publisher_website = website
+        return this
     }
 
     public setPack = (title: string): this => {
